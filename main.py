@@ -87,7 +87,6 @@ def generateSen(model, firstWords, result = ""):
     '''if len(firstWords) == -1: #base case, when we are out of sentence starters
         result += '\n done \n'
         return result #return the result because function is over
-
     else:'''
 
        
@@ -103,12 +102,12 @@ def generateSen(model, firstWords, result = ""):
         word = vals[0] #setting word to the only word in the list
 
     if '.' in word:
-        result+= ". \nending sentence...\n"
+        result+= ". "
         try:
             word = firstWords[0]
             firstWords.pop(0)        
         except:
-            result += '\n done \n'
+            #result += '\n done \n'
             return result
     #print("added " + word)
     result += (word + " ")  
@@ -116,6 +115,6 @@ def generateSen(model, firstWords, result = ""):
 
 
 e = train(fileString)
-a = generateSen(e, ["Barry","Bee"])
+a = generateSen(e, ["Barry","Bee","Benson"])
 print(a)
         
