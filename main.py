@@ -3,7 +3,7 @@ import random
 trainingData = "Yeah baby I like it like that You gotta believe me when I tell you I said I like it like that"
 
 
-filepath = 'BEEMOVIE.txt'
+filepath = 'harrypotter.txt'
 file = open(filepath,'r')
 fileString = file.read()
 fileString.replace(" ","")
@@ -55,7 +55,7 @@ def generate(model, firstWords, sens):
         
 '''
 
-def generateWords(model,firstWord,numWords):
+def generateWords(model,firstWord,numWords): #generating words (1 sentence)
     #model = dictionary
     #the key
     #numwords number of total words
@@ -70,7 +70,7 @@ def generateWords(model,firstWord,numWords):
         #print(word)
         return firstWord +' '+ generateWords(model,word,numWords-1)+' '
 
-def generateSen(model, firstWords, result = ""):
+def generateSen(model, firstWords, result = ""): #generating sentences (Multiple sentences)
     #model = dictionary
     #firstWords = the words that start each sentence, user input
     #result = the final string that is a sum of all the words we add to it. The product we return
@@ -101,20 +101,20 @@ def generateSen(model, firstWords, result = ""):
     elif valsLength == 1: # if there is only one word in vals
         word = vals[0] #setting word to the only word in the list
 
-    if '.' in word:
-        result+= ". "
+    if '.' in word: #if there is a period in the word, that is an end to the sentence
+        result+= word + " " #adding the word to the sentence
         try:
             word = firstWords[0]
             firstWords.pop(0)        
         except:
-            #result += '\n done \n'
             return result
-    #print("added " + word)
-    result += (word + " ")  
-    return generateSen(model,firstWords,result)
+    result += (word + " ")  #adding the word to the sentence
+    return generateSen(model,firstWords,result) #recursion call
 
 
 e = train(fileString)
-a = generateSen(e, ["Barry","Bee","Benson"])
+a = generateSen(e, ["Dursley","Potter"])
+#b = generateWords(e,"Barry", 500)
+#generateSen and generateWords both work but take different inputs, words being based off the number of words to be printed and sen off of number of periods (".")
 print(a)
         
