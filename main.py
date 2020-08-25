@@ -1,5 +1,20 @@
 from _collections import defaultdict
 import random
+from classifyReview import*
+
+
+a = format_sentence("Hello my name is Sidharth.")
+#print(a)
+
+b,c = splitTrainTest(["A", "B", "C", "D"], 0.25)
+#print(f'{b} \n {c}')
+
+d = formatForClassifier(["A good one", "The best!"], "pos")
+#print(d)
+
+
+classifyReviews()
+#---------------------#
 trainingData = "Yeah baby I like it like that You gotta believe me when I tell you I said I like it like that"
 
 
@@ -112,9 +127,11 @@ def generateSen(model, firstWords, result = ""): #generating sentences (Multiple
     return generateSen(model,firstWords,result) #recursion call
 
 
+
+
 e = train(fileString)
 a = generateSen(e, ["Dursley","Potter"])
 #b = generateWords(e,"Barry", 500)
 #generateSen and generateWords both work but take different inputs, words being based off the number of words to be printed and sen off of number of periods (".")
-print(a)
+#print(a)
         
